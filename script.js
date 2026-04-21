@@ -2,7 +2,9 @@ const button = document.querySelector("#button");
 const text = document.querySelector("#text");
 
 function PAYS() {
-  fetch("https://restcountries.com/v3.1/all?fields=name,region,flags")
+  fetch(
+    "https://restcountries.com/v3.1/all?fields=name,capital,population,region,flags",
+  )
     .then((response) => {
       return response.json();
     })
@@ -17,10 +19,11 @@ function PAYS() {
                 <img src="${country.flags.png}" width="100">
                 <h3>${country.name.common}</h3>
                 <p>${country.region}</p>
+                <p>${country.population}</p>
+                <p>${country.capital}</p>
             </div>
         `;
       }
-      text.appendChild(imgElement);
     });
 }
 button.addEventListener("click", PAYS);
